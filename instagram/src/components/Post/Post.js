@@ -1,8 +1,8 @@
 import React from 'react';
 // import moment from 'moment';
 import CommentSection from '../CommentSection/CommentSection.js';
-// import love from './love.png';
-// import comment from './comment.png';
+import love from './love.png';
+import comment from './comment.png';
 
 export default class Post extends React.Component{
   constructor(props) {
@@ -18,9 +18,9 @@ export default class Post extends React.Component{
 
   incrementLikes = (e) => this.setState({ likes: this.state.likes + 1 })
 
-  timeSincePost() {
-    // return moment(this.props.timestamp, 'MMMM Do YYYY, h:mm:ss a').fromNow();
-  }
+  // timeSincePost() {
+  //   return moment(this.props.timestamp, 'MMMM Do YYYY, h:mm:ss a').fromNow();
+  // }
 
   addComment = (e) => {
     this.setState((previous) => {
@@ -52,16 +52,16 @@ export default class Post extends React.Component{
           alt="Main" />
         <div className="Post__footer">
           <div className="Post__action-bar">
-            {/* <img src={love} alt="Love" onClick={this.incrementLikes} />  */}
-            {/* <img src={comment} alt="Comment" /> */}
+            <img src={love} alt="Love" onClick={this.incrementLikes} /> 
+            <img src={comment} alt="Comment" />
           </div>
           <div className="Post__likes">
             {this.state.likes} likes
           </div>
           <CommentSection comments={this.state.comments} />
-          <div className="Post__time-since-post">
+          {/* <div className="Post__time-since-post">
             {this.timeSincePost()}
-          </div>
+          </div> */}
           <div className="Post__inputs">
             <input 
               type="text" 

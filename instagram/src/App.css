@@ -1,4 +1,8 @@
-.App {
+@import './components/SearchBar/SearchBar.css';
+@import './components/PostContainer/PostContainer.css';
+@import './components/CommentSection/CommentSection.css';
+
+/* .App {
   text-align: center;
 }
 
@@ -25,4 +29,13 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+} */
+
+.App {
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  font-size: 0.95rem;
+  background-color: darkslateblue;
+  padding-bottom:20px;
 }
