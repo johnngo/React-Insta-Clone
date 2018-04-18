@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
-import Post from './components/Post/Post.js';
 import SearchBar from './components/SearchBar/SearchBar.js';
-import dummyData from './dummy-data.js';
+import PostContainer from './components/PostContainer/PostContainer';
+import posts from './dummy-data';
 
 class App extends Component {
-  componentWillMount() {
-    this.setState({ posts: dummyData, searchText: '' });
+
+  constructor() {
+    super();
+    this.state = {
+      posts:[]
+    };
   }
 
-  postElements() {
-    return this.state.posts
-      .filter((post) => post.username.includes(this.state.searchText))
-      .map((post) => <Post {...post} />);
+  componentDidMount() {
+    this.setState({ posts });
   }
 
-  handleSearch = (e) => this.setState({ searchText: e.target.value })
+  searchPosts = (searchString) => {
+        let searchedPosts = this.state.posts.filter(post => post.username.includes(searchString));
+        this.setState({ posts: searchedPosts });
+      }
 
   render() {
     return (
       <div className="App">
-        <SearchBar searchText={this.state.searchText} handleSearch={this.handleSearch} />
-        {this.postElements()}
+        <SearchBar searchPosts={this.searchPosts} />
+        {this.state.posts.map(post => <PostContainer post={post}></PostContainer>)}
       </div>
     );
   }
